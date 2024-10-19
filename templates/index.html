@@ -26,14 +26,15 @@
             border-radius: 15px;
             padding: 30px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 128, 0, 0.3);
             width: 350px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover transition */
         }
 
         .form-card:hover {
-            transform: translateY(-5px); /* Move up on hover */
-            box-shadow: 0 8px 40px rgba(0, 128, 0, 0.7); /* Enhance shadow on hover */
+            transform: scale(1.05); /* Move up on hover */
+            box-shadow: 0 8px 40px rgba(0, 128, 0, 0.4); /* Enhance shadow on hover */
         }
 
         h1 {
@@ -58,7 +59,6 @@
             color: #ffffff; /* White text in input */
             box-shadow: 0 2px 5px rgba(0, 128, 0, 0.3); /* Greenish shadow */
             transition: background 0.3s; /* Smooth background transition */
-            justify-items: center;
         }
 
         input[type="number"]:focus {
