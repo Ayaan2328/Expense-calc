@@ -3,114 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Expense Calculator</title>
+    <title>Electric Car Price Predictor</title>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            margin: 0;
             font-family: 'Red Hat Display', sans-serif;
-            background-color: #000000; /* Black background */
-            color: #ffffff; /* White text */
+            background-color: black;
+            color: #E0E0E0;
+            height: 100vh;
+            margin: 0;
+            
         }
-
+        
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-
-        .form-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.15);
-            width: 350px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover transition */
- 
-        }
-
-        .form-card:hover {
-            transform: scale(1.05); /* Move up on hover */
-            box-shadow: 0px 0px 30px 10px rgba(0, 128, 0, 0.35); /* Enhance shadow on hover */
+            flex-direction: column;
         }
 
         h1 {
-            margin-bottom: 20px;
-            color: #ffffff; /* White text for the heading */
+            background: -webkit-linear-gradient(#4596FB, #28fb59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        form {
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.075);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            width: 520px;
+            height: 470px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        form:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 40px 20px rgba(0, 128, 0, 0.32);
         }
 
         label {
-            margin: 10px 0;
-            display: block;
-            color: #A9DFBF; /* Dark green text */
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        input[type="number"] {
-            margin-left: -10px;
-            font-family: 'Red Hat Display', sans-serif;
-            width: 100%;
+        input {
+            width: 40%;
+            box-shadow: 0 2px 5px rgba(0, 128, 0, 0.3);
+        	font-size: 16px;
+            font-weight: bold;
             padding: 10px;
             margin-bottom: 20px;
             border: none;
             border-radius: 5px;
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #E0E0E0;
+            transition: background 0.3s;
+        }
+
+        input:focus {
             background: rgba(255, 255, 255, 0.1);
-            color: white; /* White text in input */
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 128, 0, 0.3); /* Greenish shadow */
-            transition: background 0.3s; /* Smooth background transition */
+            outline: none;
         }
 
-        input[type="number"]:focus {
-            background: rgba(255, 255, 255, 1.0); /* Lighter background on focus */
-            color: black;
-        }
-
-        button[type="submit"] {
-            font-family: 'Red Hat Display', sans-serif;
-            background: #28FB59;
-            color: black;
-            font-weight: bold;
-            border: none;
+        button {
+            margin-bottom: 50px;
+        	margin-top: 40px;
+        	width: 25%;
+	    	font-family: 'Red Hat Display', sans-serif;
             padding: 10px;
+            background-color: #28fb59;
+            border: none;
             border-radius: 5px;
+            color: black;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s, transform 0.3s; /* Smooth hover transition */
+            transition: background 0.3s, transform 0.3s;
         }
 
-        button[type="submit"]:hover {
-            background: #126e27;
-            color: white;
-            transform: translateY(-3px); /* Move up on hover */
+        button:hover {
+            transform: translateY(-3px);
+            background-color: #4596FB; /* Lighter green on hover */
         }
-
-        .icon {
-            font-size: 50px;
-            color: #A9DFBF; /* Dark green icon color */
-            margin-bottom: 20px;
-        }
+        
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="form-card">
-            <i class="fas fa-car icon"></i>
-            <h1>Vehicle Expense Calculator</h1>
-            <form action="/calculate" method="POST">
-                <label for="km_per_day">Kilometers Per Day (km):</label>
-                <input type="number" id="km_per_day" name="km_per_day" step="any" required>
-                
-                <label for="mileage">Vehicle Mileage (km/l):</label>
-                <input type="number" id="mileage" name="mileage" step="any" required>
-                
-                <button type="submit">
-                  <i class="fas fa-calculator"></i> Calculate
-                </button>
-            </form>
-        </div>
+    <form action="/predict" method="POST">
+    <i class="fas fa-car icon" 
+    style="background: -webkit-linear-gradient(#28fb59,#4596FB);
+           -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 50px;
+            margin-top: 40px;"></i>
+        <h1>Vehicle Expense Calculator</h1>
+        <label for="range">Kilometers Per Day (km):</label>
+        <input type="number" id="range" name="range" required>
+
+        <label for="horsepower">Vehicle Mileage (km/L):</label>
+        <input type="number" id="horsepower" name="horsepower" required>
+
+        <button type="submit"><i class="fas fa-calculator"></i> Calculate</button>
+    </form>
     </div>
 </body>
 </html>
