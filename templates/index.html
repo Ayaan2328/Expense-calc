@@ -65,7 +65,7 @@
             background: rgba(255, 255, 255, 0.3); /* Lighter background on focus */
         }
 
-        button {
+        input[type="submit"] {
             font-family: 'Red Hat Display', sans-serif;
             background: #28FB59;
             color: black;
@@ -78,7 +78,7 @@
             transition: background 0.3s, transform 0.3s; /* Smooth hover transition */
         }
 
-        button:hover {
+        input[type="submit"]:hover {
             background: #126e27;
             color: white;
             transform: translateY(-3px); /* Move up on hover */
@@ -103,7 +103,7 @@
                 <label for="mileage">Vehicle Mileage (km/l):</label>
                 <input type="number" id="mileage" name="mileage" step="any" required>
                 
-                <button type="submit"><i class="fas fa-calculator"></i> Calculate</button>
+                <input type="submit" value="Calculate">
             </form>
         </div>
     </div>
