@@ -3,55 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Results</title>
+    <title>Predicted Price</title>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            margin: 0;
             font-family: 'Red Hat Display', sans-serif;
-            background-color: #000000; /* Black background */
-            color: #ffffff; /* White text */
-        }
-
-        .container {
+            background-color: black;
+            color: #E0E0E0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-
-        .result-card {
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.12); /* Greenish shadow */
-            backdrop-filter: blur(10px);
-            width: 350px;
-            height: 400px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover transition */
-        }
-
-        .result-card:hover {
-            border: 1px solid #28fb59;
-            transform: scale(1.05); /* Move up on hover */
-            box-shadow: 0px 0px 40px 20px rgba(0, 128, 0, 0.32); /* Enhance shadow on hover */
+            margin: 0;
+            flex-direction: column;
         }
 
         h1 {
+        	text-align: left;
+        	margin-top: 35px;
+        	color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.12);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .price-container:hover {
+        	border: 1px solid #28fb59;
+            transform: scale(1.05);
+            box-shadow: 0px 0px 40px 20px rgba(0, 128, 0, 0.32);
+        }
+
+        .price {
+        	margin-top: 15px;
+            font-size: 3rem;
+            font-weight: bold;
+            background: -webkit-linear-gradient(#28fb59,#4596FB);
+           -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;/* Light Green */
+        }
+
+        .icon {
             background: -webkit-linear-gradient(#28fb59,#4596FB);
            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 40px;
-            color: #ffffff; /* White text for the heading */
-        }
-
-        p {
-            font-size: 1.4rem;
-            margin: 20px;
+            font-size: 50px;
+            color: #A9DFBF; /* Dark green icon color */
+            margin-bottom: 15px;
+            margin-top: 5px;
         }
 
         a {
@@ -72,39 +79,18 @@
             background: -webkit-linear-gradient(#28fb59,#4596FB);
             color: black;
             transform: translateY(-3px); /* Move up on hover */
-        }
-
-        .icon {
-            background: -webkit-linear-gradient(#28fb59,#4596FB);
-           -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 50px;
-            color: #A9DFBF; /* Dark green icon color */
-            margin-bottom: 2px;
-        }
-        
-        .txt {
-        font-weight: bold;
-        }
-        
-        .txt1 {
-        font-weight: bold;
-        background: -webkit-linear-gradient(#28fb59,#4596FB);
-           -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-       } 
+            }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="result-card">
-            <i class="fas fa-calculator icon"></i>
-            <h1>Expense Results</h1>
-            <p><span class="txt">Weekly Expense:</span> <span class="txt1"> ₹{{ '{:.2f}'.format(weekly_expense) }}</span></p>
-            <p><span class="txt">Monthly Expense:</span> <span class="txt1"> ₹{{ '{:.2f}'.format(monthly_expense) }}</span></p>
-            <p><span class="txt">Yearly Expense:</span> <span class="txt1"> ₹{{ '{:.2f}'.format(yearly_expense) }}</span></p>
-            <a href="/">Go back</a>
-        </div>
+    
+    <div class="price-container">
+    	<i class="fas fa-calculator icon"></i>
+    	<h1>Predicted Electric Car Price:</h1>
+        <p class="price">₹{{ formatted_price }}</p>
+        <a href="/">Go Back</a>
+        
     </div>
+    
 </body>
 </html>
