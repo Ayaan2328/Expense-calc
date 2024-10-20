@@ -3,124 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electric Car Price Predictor</title>
+    <title>Expense Results</title>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Red Hat Display', sans-serif;
-            background-color: black;
-            color: #E0E0E0;
-            height: 100vh;
             margin: 0;
-            
+            font-family: 'Red Hat Display', sans-serif;
+            background-color: #000000; /* Black background */
+            color: #ffffff; /* White text */
         }
-        
+
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
+        }
+
+        .result-card {
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.12); /* Greenish shadow */
+            backdrop-filter: blur(10px);
+            width: 350px;
+            height: 400px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover transition */
+        }
+
+        .result-card:hover {
+            border: 1px solid #28fb59;
+            transform: scale(1.05); /* Move up on hover */
+            box-shadow: 0px 0px 40px 20px rgba(0, 128, 0, 0.32); /* Enhance shadow on hover */
         }
 
         h1 {
-            background: -webkit-linear-gradient(#4596FB, #28fb59);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        form {
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.075);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.12);
-            display: flex;
-            flex-direction: column;
-            width: 500px;
-            height: 480px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        form:hover {
-            border: 1px solid #28fb59;
-            transform: scale(1.05);
-            box-shadow: 0px 0px 40px 20px rgba(0, 128, 0, 0.32);
-        }
-
-        label {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 40%;
-            box-shadow: 0 2px 5px rgba(0, 128, 0, 0.3);
-        	font-size: 16px;
-            font-weight: bold;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Red Hat Display', sans-serif;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: #E0E0E0;
-            transition: background 0.3s;
-        }
-
-        input:focus {
-            border: 1px solid #28fb59;
-            background: rgba(255, 255, 255, 0.08);
-            outline: none;
-        }
-
-        button {
-            margin-bottom: 50px;
-        	margin-top: 30px;
-        	width: 25%;
-	    	font-family: 'Red Hat Display', sans-serif;
-            padding: 10px;
             background: -webkit-linear-gradient(#28fb59,#4596FB);
-            border: none;
-            border-radius: 5px;
-            color: black;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
+           -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            color: #ffffff; /* White text for the heading */
         }
 
-        button:hover {
-            transform: translateY(-3px);
-          /* Lighter green on hover */
+        p {
+           
+            margin: 20px;
+        }
+
+        a {
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            background: -webkit-linear-gradient(#28fb59,#4596FB);
+            color: black;
+            text-decoration: none;
+            border: 1px solid #28fb59;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s, transform 0.3s; /* Smooth hover transition */
+        }
+
+        a:hover {
+            font-weight: bold;
+            background: -webkit-linear-gradient(#28fb59,#4596FB);
+            color: black;
+            transform: translateY(-3px); /* Move up on hover */
+        }
+
+        .icon {
+            background: -webkit-linear-gradient(#28fb59,#4596FB);
+           -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 50px;
+            color: #A9DFBF; /* Dark green icon color */
+            margin-bottom: 2px;
         }
         
+        .txt {
+        font-weight: bold;
+        }
+        
+        .txt1 {
+        font-weight: bold;
+        background: -webkit-linear-gradient(#28fb59,#4596FB);
+           -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+       } 
     </style>
 </head>
 <body>
     <div class="container">
-    <form action="/predict" method="POST">
-    <i class="fas fa-car icon" 
-    style="background: -webkit-linear-gradient(#28fb59,#4596FB);
-           -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 50px;
-            margin-top: 50px;"></i>
-        <h1>Vehicle Expense Calculator</h1>
-        <label for="range">Kilometers Per Day (km):</label>
-        <input type="number" id="range" name="range" required>
-
-        <label for="horsepower">Vehicle Mileage (km/L):</label>
-        <input type="number" id="horsepower" name="horsepower" required>
-
-        <button type="submit"><i class="fas fa-calculator"></i> Calculate</button>
-    </form>
+        <div class="result-card">
+            <i class="fas fa-calculator icon"></i>
+            <h1>Expense Results</h1>
+            <p><span class="txt">Weekly Expense:</span> <span class="txt1">₹{{ '{:.2f}'.format(weekly_expense) }}</span></p>
+            <p><span class="txt">Monthly Expense:</span> <span class="txt1">₹{{ '{:.2f}'.format(monthly_expense) }}</span></p>
+            <p><span class="txt">Yearly Expense:</span> <span class="txt1">₹{{ '{:.2f}'.format(yearly_expense) }}</span></p>
+            <a href="/">Go back</a>
+        </div>
     </div>
 </body>
 </html>
