@@ -26,6 +26,18 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
+        
+        .price-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent; /* No background by default */
+            transition: background 0.3s ease-in-out;
+            pointer-events: none; /* Prevent interaction with the pseudo-element */
+          }
 
         .price-container {
             background: rgba(255, 255, 255, 0.1);
@@ -34,6 +46,11 @@
             box-shadow: 0px 0px 60px 80px rgba(0, 128, 0, 0.12);
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        /* Show radial glow on hover */
+        .price-container:hover::before {
+            background: radial-gradient(circle at var(--x) var(--y), rgba(0, 255, 0, 0.15), transparent 12%);
         }
 
         .price-container:hover {
@@ -91,6 +108,19 @@
         <a href="/">Go Back</a>
         
     </div>
-    
+   
+<script>
+    const priceContainer = document.querySelector('.price-container');
+
+    priceContainer.addEventListener('mousemove', (e) => {
+        const rect = priceContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        priceContainer.style.setProperty('--x', `${x}px`);
+        priceContainer.style.setProperty('--y', `${y}px`);
+    });
+</script>
+
 </body>
 </html>
